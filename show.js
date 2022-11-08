@@ -51,6 +51,24 @@ let up_go = 0; //윗쪽 방향키를 누르고 있는가
 let down_go = 0; //조작이 없는지 확인용
 let animate_stopped = 0; //animate 끝났는지 확인용
 
+$(document).keydown(function down(key){ //enter를 누를시
+    if (key.keyCode == 13) { //Down
+        console.log($('#slow').val());
+        if ($('#fast').val() != ''){
+            fast_speed = Number($('#fast').val());
+            console.log(fast_speed);
+        }
+        if ($('#slow').val() != ''){
+            slow_speed = Number($('#slow').val());
+            console.log(slow_speed);
+        }
+        let test = `<div className="end show_num">2. 현재 기본 속도: ${slow_speed} <br> 2. 방향키 속도: ${fast_speed}</div>`
+        $('.show_num').empty();
+        $('.show_num').append(test);
+
+    }
+})
+
 function go_animate() {
     let margin_top = Number($('#box-answers').css('margin-top').slice(0, -2));
     if (start == 0){
@@ -106,7 +124,7 @@ $(document).keyup(function down_and_up(key){ //방향키에서 손을 뗐을 때
 })
 
 let checkendId;
-checkendId = setInterval(check_end, 500);
+// checkendId = setInterval(check_end, 500);
 let time = 0;
 
 function check_end() {
@@ -115,21 +133,22 @@ function check_end() {
     } else {
         time = 0;
     }
-    console.log('time: ', time);
-    if (time == 5){
-        clearInterval(intervalId);
-        intervalId = null;
-        clearInterval(checkendId);
-        checkendId = null;
-        window.location.href = './';
-    }
+    // console.log('time: ', time);
+    // if (time == 5){
+    //     clearInterval(intervalId);
+    //     intervalId = null;
+    //     clearInterval(checkendId);
+    //     checkendId = null;
+    //     window.location.href = './';
+    // }
 }
 
 $('#answer-again').on("click", function go_to_question() {
-    window.location.href = './question';
+    // window.location.href = './question';
 })
 
 $('#end').on("click", function go_to_main() {
-    window.location.href = './';
+    // window.location.href = './';
 })
+
 
